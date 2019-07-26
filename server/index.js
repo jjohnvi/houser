@@ -1,9 +1,9 @@
 const express = require("express");
-const app = express();
 const massive = require("massive");
+const app = express();
+const controller = require("./controllers/controller");
 require("dotenv").config();
 const { SERVER_PORT, CONNECTION_STRING } = process.env;
-const controller = require("./controllers/controller");
 
 app.use(express.json());
 

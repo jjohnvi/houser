@@ -6,7 +6,8 @@ import store, {
   UPDATE_ADDRESS,
   UPDATE_ISTATE,
   UPDATE_ZIPCODE,
-  RESET_FIELDS
+  RESET_FIELDS,
+  UPDATE_CITY
 } from "../../redux/store";
 
 class Wizard extends Component {
@@ -16,6 +17,7 @@ class Wizard extends Component {
     this.state = {
       name: reduxState.name,
       address: reduxState.address,
+      city: reduxState.city,
       istate: reduxState.istate,
       zipcode: reduxState.zipcode
     };
@@ -27,11 +29,20 @@ class Wizard extends Component {
       this.setState({
         name: reduxState.name,
         address: reduxState.address,
+        city: reduxState.city,
         istate: reduxState.istate,
         zipcode: reduxState.zipcode
       });
     });
   }
+
+  // viewFirst = e => {
+  //   this.setState({ view: "1" });
+  // };
+
+  // viewChange = e => {
+  //   this.setState({ view: e });
+  // };
 
   handleName = e => {
     store.dispatch({
@@ -43,6 +54,12 @@ class Wizard extends Component {
   handleAddress = e => {
     store.dispatch({
       type: UPDATE_ADDRESS,
+      payload: e.target.value
+    });
+  };
+  handleCity = e => {
+    store.dispatch({
+      type: UPDATE_CITY,
       payload: e.target.value
     });
   };
@@ -78,7 +95,7 @@ class Wizard extends Component {
   };
 
   handleCancel = () => {
-    const reduxState = store.getState();
+    this.props.history.push("/");
   };
 
   render() {
@@ -102,6 +119,14 @@ class Wizard extends Component {
           />
         </h3>
         <h3>
+          City:
+          <input
+            type="text"
+            onChange={this.handleCity}
+            value={reduxState.city}
+          />
+        </h3>
+        <h3>
           State:
           <input
             type="text"
@@ -118,9 +143,11 @@ class Wizard extends Component {
           />
         </h3>
         <button onClick={this.handleAdd}>Add House</button>
-        <Link to="/">
-          <button>Cancel</button>
-        </Link>
+
+        <button onClick={this.handleCancel}>Cancel</button>
+        <div>
+          <button onClick={this.viewChange}>Next</button>
+        </div>
       </>
     );
   }

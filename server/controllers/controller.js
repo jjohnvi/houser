@@ -25,10 +25,10 @@ const getOne = (req, res, next) => {
 
 const create = (req, res, next) => {
   const dbInstance = req.app.get("db");
-  const { name, address, istate, zipcode } = req.body;
+  const { name, address, city, istate, zipcode } = req.body;
 
   dbInstance
-    .create_house([name, address, istate, zipcode])
+    .create_house([name, address, city, istate, zipcode])
     .then(house => res.status(200).json(house))
     .catch(err => {
       res.status(500).send({ errorMessage: "Can't create the house, bro..." });
@@ -40,8 +40,8 @@ const deleteHouse = (req, res, next) => {
   dbInstance = req.app.get("db");
   const { id } = req.params;
 
-  console
-    .log(id)
+  dbInstance
+    .delete_house(id)
     .then(houses => res.status(200).json(houses))
     .catch(err => {
       res.status(500).send({ errorMessage: "Can't delete item, bro..." });

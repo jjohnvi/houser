@@ -1,3 +1,3 @@
-UPDATE houses SET name = $2, address = $3, istate = $4, zipcode = $5
+UPDATE houses SET name = $2, address = $3, city = $4, istate = $5, zipcode = $6
 WHERE id = $1
 RETURNING *;
