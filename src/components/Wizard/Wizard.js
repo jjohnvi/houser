@@ -84,6 +84,7 @@ class Wizard extends Component {
       .post("/api/houses", {
         name: reduxState.name,
         address: reduxState.address,
+        city: reduxState.city,
         istate: reduxState.istate,
         zipcode: reduxState.zipcode
       })
@@ -146,7 +147,9 @@ class Wizard extends Component {
 
         <button onClick={this.handleCancel}>Cancel</button>
         <div>
-          <button onClick={this.viewChange}>Next</button>
+          <Link to="/wizard2">
+            <button onClick={this.viewChange}>Next</button>
+          </Link>
         </div>
       </>
     );

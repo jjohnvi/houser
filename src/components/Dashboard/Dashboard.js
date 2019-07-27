@@ -12,8 +12,6 @@ class Dashboard extends Component {
       listings: reduxState.listings,
       house: []
     };
-
-    this.getHouses = this.getHouses.bind(this);
   }
 
   componentDidMount() {

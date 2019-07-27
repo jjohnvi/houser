@@ -20,5 +20,5 @@ app.get("/api/houses/:id", controller.getOne);
 app.delete("/api/houses/:id", controller.deleteHouse);
 
 app.listen(SERVER_PORT, () => {
-  console.log(`Server listneing on port ${SERVER_PORT}`);
+  console.log(`This game sucks ${SERVER_PORT}`);
 });
