@@ -44,7 +44,10 @@ function reducer(state = initialState, action) {
         address: "",
         city: "",
         istate: "",
-        zipcode: 0
+        zipcode: 0,
+        imageurl: "",
+        mortgage: 0,
+        rent: 0
       };
     case UPDATE_LISTINGS:
       return { ...state, listings: payload };

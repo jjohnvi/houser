@@ -12,6 +12,15 @@ class Image extends Component {
     };
   }
 
+  componentDidMount() {
+    store.subscribe(() => {
+      const reduxState = store.getState();
+      this.setState({
+        name: reduxState.imageurl
+      });
+    });
+  }
+
   handleImage = e => {
     store.dispatch({
       type: UPDATE_IMAGEURL,

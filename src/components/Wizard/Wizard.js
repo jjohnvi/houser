@@ -78,23 +78,6 @@ class Wizard extends Component {
     });
   };
 
-  handleAdd = () => {
-    const reduxState = store.getState();
-    axios
-      .post("/api/houses", {
-        name: reduxState.name,
-        address: reduxState.address,
-        city: reduxState.city,
-        istate: reduxState.istate,
-        zipcode: reduxState.zipcode
-      })
-      .then(
-        store.dispatch({
-          type: RESET_FIELDS
-        })
-      );
-  };
-
   handleCancel = () => {
     this.props.history.push("/");
   };
@@ -143,7 +126,7 @@ class Wizard extends Component {
             value={reduxState.zipcode}
           />
         </h3>
-        <button onClick={this.handleAdd}>Add House</button>
+        {/* <button onClick={this.handleAdd}>Add House</button> */}
 
         <button onClick={this.handleCancel}>Cancel</button>
         <div>

@@ -25,10 +25,30 @@ const getOne = (req, res, next) => {
 
 const create = (req, res, next) => {
   const dbInstance = req.app.get("db");
-  const { name, address, city, istate, zipcode } = req.body;
+  const {
+    name,
+    address,
+    city,
+    istate,
+    zipcode,
+    image,
+    monthly_mortgage,
+    amount,
+    desired_rent
+  } = req.body;
 
   dbInstance
-    .create_house([name, address, city, istate, zipcode])
+    .create_house([
+      name,
+      address,
+      city,
+      istate,
+      zipcode,
+      image,
+      monthly_mortgage,
+      amount,
+      desired_rent
+    ])
     .then(house => res.status(200).json(house))
     .catch(err => {
       res.status(500).send({ errorMessage: "Can't create the house, bro..." });

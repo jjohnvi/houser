@@ -66,6 +66,10 @@ class Dashboard extends Component {
             <p>{val.city}</p>
             <p>{val.istate}</p>
             <p>{val.zipcode}</p>
+            <img src={val.image} alt="Oops" />
+            <p>{val.monthly_mortgage}</p>
+            <p>{val.amount}</p>
+            <p>{val.desired_rent}</p>
             <button
               onClick={() => {
                 this.handleDelete(val.id);
